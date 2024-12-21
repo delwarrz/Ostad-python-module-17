@@ -1,6 +1,10 @@
 const buttons = document.getElementsByTagName("button");
 
 function updateTotal() {
+  //clearing promo code when changing items
+  const promoCodeField = document.getElementById('input-field');
+  promoCodeField.value = '';
+
   const basePrice = 1299;
   const memoryCost = parseInt(
     document.getElementById("memory-cost").textContent
@@ -42,6 +46,21 @@ function customizationPrice(id, cost) {
   const totalCost = updateTotal();
   const totalPrice = document.getElementById("total-price");
   totalPrice.textContent = totalCost;
+
+  // Updating User Payment
+  const userPayment = document.getElementById('user-payment');
+  userPayment.textContent = totalCost;
 }
 
-// function promocode()
+function promocode(){
+  const promoCode = document.getElementById('input-field').value;
+  if(promoCode == 'Ostad'){
+    const userPayment = document.getElementById('user-payment');
+    const currentTotalPrice = parseInt(userPayment.textContent);
+    const discountedPrice = currentTotalPrice - (currentTotalPrice*.10);
+    userPayment.textContent = discountedPrice;
+
+  }else{
+    alert("Not a valid promo code!");
+  }
+}
