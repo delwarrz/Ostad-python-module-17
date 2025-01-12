@@ -65,11 +65,12 @@ function promocode(){
     discountValue.textContent = currentTotalPrice*.10;
     const discountedPrice = currentTotalPrice - (currentTotalPrice*.10);
     userPayment.textContent = discountedPrice;
+    alert("Promo code applied successfully!");
   }else if(promoCode == 'ostad5'){
     discountValue.textContent = currentTotalPrice*.05;
     const discountedPrice = currentTotalPrice - (currentTotalPrice*.05);
     userPayment.textContent = discountedPrice;
-
+    alert("Promo code applied successfully!");
   }else{
     alert("Not a valid promo code!");
   }
