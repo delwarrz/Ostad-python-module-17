@@ -5,6 +5,10 @@ function updateTotal() {
   const promoCodeField = document.getElementById('input-field');
   promoCodeField.value = '';
 
+  const discountValue = document.getElementById('discount');
+  discountValue.textContent = 0;
+  
+
   const basePrice = 1299;
   const memoryCost = parseInt(
     document.getElementById("memory-cost").textContent
@@ -54,10 +58,16 @@ function customizationPrice(id, cost) {
 
 function promocode(){
   const promoCode = document.getElementById('input-field').value;
-  if(promoCode == 'Ostad'){
-    const userPayment = document.getElementById('user-payment');
-    const currentTotalPrice = parseInt(userPayment.textContent);
+  const userPayment = document.getElementById('user-payment');
+  const currentTotalPrice = parseInt(userPayment.textContent);
+  const discountValue = document.getElementById('discount');
+  if(promoCode == 'ostad10'){    
+    discountValue.textContent = currentTotalPrice*.10;
     const discountedPrice = currentTotalPrice - (currentTotalPrice*.10);
+    userPayment.textContent = discountedPrice;
+  }else if(promoCode == 'ostad5'){
+    discountValue.textContent = currentTotalPrice*.05;
+    const discountedPrice = currentTotalPrice - (currentTotalPrice*.05);
     userPayment.textContent = discountedPrice;
 
   }else{
